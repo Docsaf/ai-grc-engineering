@@ -1,0 +1,35 @@
+name: Collect and score evidence
+on:
+  schedule:
+    - cron: "0 6 * * *"   # daily 06:00 UTC
+  workflow_dispatch:
+permissions:
+  contents: write
+  id-token: write        # OIDC for read-only cloud roles — no long-lived keys
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.12" }
+      - run: pip install pyyaml
+      # Example: federate into a read-only AWS role for the aws_config collector
+      # - uses: aws-actions/configure-aws-credentials@v4
+      #   with:
+      #     role-to-assume: arn:aws:iam::123456789012:role/grc-evidence-readonly
+      #     aws-region: us-east-1
+      - run: python scripts/collect_evidence.py
+      - run: python scripts/score_controls.py
+        continue-on-error: true
+        id: score
+      - name: Commit evidence
+        run: |
+          git config user.name "grc-evidence-bot"
+          git config user.email "grc-evidence-bot@users.noreply.github.com"
+          git add trust-center/evidence
+          git diff --cached --quiet || git commit -m "evidence: scheduled collection $(date -u +%F)"
+          git push
+      - name: Open ticket for failed public controls
+        if: steps.score.outcome == 'failure'
+        run: echo "::warning::One or more public controls are Failed — open a ticket to the control owner (wire to Jira/ServiceNow here)"

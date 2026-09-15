@@ -1,0 +1,22 @@
+id: CLD-03
+title: Customer data at rest is encrypted with provider-managed or customer-managed keys
+domain: Cloud Configuration
+owner: platform-engineering
+status: implemented
+public: true
+statement: >
+  All storage services holding customer data (object storage, block volumes,
+  managed databases) enforce encryption at rest. Unencrypted resources are
+  detected by cloud configuration rules and remediated within the patching SLA.
+frameworks:
+  soc2: [CC6.1, CC6.7]
+  iso27001_2022: [A.8.24]
+  nist_csf_2: [PR.DS-01]
+  cis_v8_1: ["3.11"]
+  nist_800_53_r5: [SC-28, SC-28(1)]
+evidence:
+  - id: cloud-encryption-at-rest
+    source: aws_config
+    assertion: "unencrypted_resources == 0"
+    freshness_days: 1
+risks: [R-007]

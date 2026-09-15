@@ -1,0 +1,22 @@
+id: VUL-01
+title: Critical vulnerabilities are remediated within 15 days of detection
+domain: Vulnerability Management
+owner: security
+status: implemented
+public: true
+statement: >
+  Production infrastructure and container images are scanned continuously.
+  Critical findings are remediated or risk-accepted within 15 days; high within
+  30 days. SLA adherence is reported weekly.
+frameworks:
+  soc2: [CC7.1]
+  iso27001_2022: [A.8.8]
+  nist_csf_2: [ID.RA-01, PR.PS-02]
+  cis_v8_1: ["7.1", "7.4"]
+  nist_800_53_r5: [RA-5, SI-2]
+evidence:
+  - id: vuln-sla-adherence
+    source: scanner
+    assertion: "critical_over_sla == 0"
+    freshness_days: 7
+risks: [R-002]

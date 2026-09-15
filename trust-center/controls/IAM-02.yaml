@@ -1,0 +1,22 @@
+id: IAM-02
+title: Multi-factor authentication is enforced for all workforce identities
+domain: Identity & Access
+owner: it-operations
+status: implemented
+public: true
+statement: >
+  All workforce accounts in the corporate identity provider are required to
+  authenticate with phishing-resistant MFA. Exceptions are time-boxed and
+  approved by the security function.
+frameworks:
+  soc2: [CC6.1, CC6.6]
+  iso27001_2022: [A.5.17, A.8.5]
+  nist_csf_2: [PR.AA-03]
+  cis_v8_1: ["6.3", "6.5"]
+  nist_800_53_r5: [IA-2(1), IA-2(2), IA-5]
+evidence:
+  - id: idp-mfa-coverage
+    source: okta
+    assertion: "mfa_enforced_pct >= 99"
+    freshness_days: 7
+risks: [R-014]
