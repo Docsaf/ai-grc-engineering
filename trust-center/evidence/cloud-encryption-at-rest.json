@@ -3,12 +3,12 @@
   "control_ids": [
     "CLD-03"
   ],
-  "collected_at": "2026-09-17T10:40:34Z",
+  "collected_at": "2026-09-18T10:16:01Z",
   "source": "aws_config",
   "metrics": {
     "unencrypted_resources": 0,
     "resources_evaluated": 1873
   },
-  "raw_ref": "s3://grc-evidence/aws_config/2026-09-17/cloud-encryption-at-rest.json",
+  "raw_ref": "s3://grc-evidence/aws_config/2026-09-18/cloud-encryption-at-rest.json",
   "sha256": "ea5611f1d6cadb16e5e71abf3b83c2b6b01239dbde6dad53f9993a9bde9816ee"
 }

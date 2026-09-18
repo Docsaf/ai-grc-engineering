@@ -3,13 +3,13 @@
   "control_ids": [
     "VUL-01"
   ],
-  "collected_at": "2026-09-17T10:40:34Z",
+  "collected_at": "2026-09-18T10:16:01Z",
   "source": "scanner",
   "metrics": {
     "critical_over_sla": 0,
     "high_over_sla": 3,
     "open_critical": 2
   },
-  "raw_ref": "s3://grc-evidence/scanner/2026-09-17/vuln-sla-adherence.json",
+  "raw_ref": "s3://grc-evidence/scanner/2026-09-18/vuln-sla-adherence.json",
   "sha256": "118187b540204563b2d259daeaf17b27280811491100a8f844d227dd4160293f"
 }
