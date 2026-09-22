@@ -3,13 +3,13 @@
   "control_ids": [
     "IAM-02"
   ],
-  "collected_at": "2026-09-21T11:28:57Z",
+  "collected_at": "2026-09-22T10:36:26Z",
   "source": "okta",
   "metrics": {
     "mfa_enforced_pct": 99.6,
     "total_users": 412,
     "exceptions": 2
   },
-  "raw_ref": "s3://grc-evidence/okta/2026-09-21/idp-mfa-coverage.json",
+  "raw_ref": "s3://grc-evidence/okta/2026-09-22/idp-mfa-coverage.json",
   "sha256": "10da77a77274e4633da97f4b58d02742a23e8621f64c61abffe95008bfc37671"
 }
